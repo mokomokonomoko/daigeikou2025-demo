@@ -1,0 +1,357 @@
+/* ===============
+globals
+=============== */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+:root {
+    scroll-padding-top: 100px;
+
+    @media (min-width: 820px) {
+        scroll-padding-top: calc(100px + 40px + 1rem);
+    }
+}
+
+/* ===============
+header
+=============== */
+header {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    height: 100px;
+
+    @media (min-width: 820px) {
+        height: calc(100px + 40px + 1rem);
+    }
+}
+
+#banner-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100px;
+    background: #152c78;
+    z-index: 11;
+    top: 0;
+
+    #daigeiko_logo {
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+        margin-left: 2rem;
+        height: 70%;
+
+        object {
+            pointer-events: none;
+        }
+    }
+
+    @media (min-width: 820px) {
+        background-position: left;
+
+        & #menu-button-div {
+            display: none;
+        }
+
+        &+nav {
+            display: block;
+            height: 40px;
+            padding: 0.5rem 0;
+            visibility: visible;
+
+            ul {
+                flex-direction: row;
+                margin: auto;
+                font-size: medium;
+            }
+        }
+    }
+}
+
+#menu-button-div {
+    padding: 0 16px 0 0;
+}
+
+#menu-button-icon-svg {
+    width: 2rem;
+    cursor: pointer;
+
+    & * {
+        transition: 0.5s;
+    }
+}
+
+#cover {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    visibility: collapse;
+    transition: 0.5s;
+
+    &.menu-button-close {
+        visibility: visible;
+        background: rgba(0, 0, 0, 0.5);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+    }
+
+    @media (min-width: 820px) {
+        display: none;
+    }
+}
+
+.menu-button-close #menu-button-icon-svg {
+    #hamburger-top {
+        transform-origin: center;
+        transform: translateX(calc(10px * sin(-45deg))) translateY(calc(10px * cos(-45deg))) rotate(45deg);
+    }
+
+    #hamburger-middle {
+        width: 0;
+    }
+
+    #hamburger-bottom {
+        transform-origin: center;
+        transform: translateX(calc(-10px * sin(45deg))) translateY(calc(-10px * cos(45deg))) rotate(-45deg);
+    }
+}
+
+#message-section p {
+    text-align: center;
+}
+
+#message-section p span {
+    text-align: center;
+    display: block;
+}
+
+nav {
+    visibility: hidden;
+    position: absolute;
+    top: 100px;
+    background: #152c78;
+    width: 100%;
+    height: 0;
+    z-index: 10;
+    transition: 0.5s;
+    display: block;
+    overflow: hidden;
+}
+
+nav.menu-open {
+    height: 60vh;
+    visibility: visible;
+}
+
+nav ul {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 90%;
+    color: #ffffff;
+    font-size: 32px;
+    list-style: none;
+}
+
+nav ul li {
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+nav ul li:hover {
+    text-decoration: underline;
+}
+
+/* ===============
+main
+=============== */
+main {
+    background: #c5ffdc;
+}
+
+#container {
+    padding: 0 1rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 750px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+section>h1 {
+    font-family: "Noto Sans JP";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 37px;
+    text-align: center;
+    color: #152c78;
+}
+
+section>p {
+    width: 70%;
+    min-width: 285px;
+    margin: 50px 0;
+    font-family: "Noto Sans JP";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+    color: #152c78;
+}
+
+/* section img {
+    width: 100%;
+} */
+
+
+#works-list-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90vw;
+    margin: 3% 0;
+    ;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.works-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 60%;
+    margin: 0 3%;
+    font-family: "Noto Sans JP";
+    line-height: 32px;
+    color: #152c78;
+    scroll-snap-align: center;
+    flex: none;
+}
+
+.works-item img {
+    max-width: 40vw;
+    max-height: 20vh;
+}
+
+.works-item h2 {
+    font-size: 28px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.works-item h3 {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.works-item #andMore-h1 {
+    margin: 30px;
+}
+
+
+#sns-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 99px;
+    background: #152c78;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+
+    &>div {
+        margin: 16px;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+
+        &>object {
+            pointer-events: none;
+        }
+    }
+
+    @media (min-width: 820px) {
+        border-radius: 1rem;
+        width: auto;
+        position: fixed;
+        flex-direction: column;
+        left: unset;
+        right: 10px;
+        bottom: 10px;
+        padding: 0.1rem;
+        height: unset;
+
+        @media (max-height: 400px) {
+            flex-direction: row;
+        }
+    }
+}
+
+.sns-logo-div {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#supporters-content-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 279px;
+    height: 480px;
+    background: #ffffff;
+}
+
+.supporters-banner-div {
+    width: 239px;
+    height: 77px;
+    padding: 10px 0;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#meidoh-banner-div {
+    background-image: url(img/banner-meidoh.png);
+}
+
+#spacer-div {
+    width: 100%;
+    height: 400px;
+    background-image: repeating-linear-gradient(45deg,
+            #c5ffdc,
+            #c5ffdc 5px,
+            slateblue 6px,
+            slateblue 7px);
+}
